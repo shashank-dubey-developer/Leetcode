@@ -1,0 +1,14 @@
+class Solution:
+    def stringShift(self, s: str, shift: List[List[int]]) -> str:
+        mov,len_s=0,len(s)
+        for dire,shi in shift:
+            if dire&1:
+                mov+=shi
+            else:
+                mov-=shi
+
+        mov%=len_s
+        if mov<0:
+            mov=len_s-abs(mov)
+
+        return s[len(s)-mov:]+s[:len(s)-mov]
