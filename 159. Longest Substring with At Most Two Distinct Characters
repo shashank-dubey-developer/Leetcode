@@ -1,0 +1,24 @@
+class Solution:
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
+        i,j=0,0
+        #sliding window
+        if len(s)<3:
+            return len(s)
+        ans=0
+        count=0
+        dic={}
+        while j<len(s):
+            dic[s[j]]=j
+            
+            if len(dic)==3:
+                k=min(dic.values())
+                dic.pop(s[k])
+                i=k+1
+                count=0
+            count=j-i+1
+            ans=max(ans,count)
+            j+=1
+            
+
+
+        return ans
